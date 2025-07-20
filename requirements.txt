@@ -1,0 +1,41 @@
+# Data Processing
+pandas>=2.0.0
+numpy>=1.26.0
+polars>=0.20.0
+scipy>=1.10.0 # Added for signal processing (e.g., savgol_filter)
+pyarrow>=14.0.0  # For parquet file support
+
+# Web Scraping
+selenium>=4.15.0  # Used for browser automation in baker.py and occ.py
+selenium-stealth>=1.0.6  # Anti-detection for Selenium
+webdriver-manager>=4.0.0  # Automatic Chrome driver management for OCC fetcher
+requests>=2.31.0  # For HTTP requests
+
+# API Clients
+fredapi>=0.5.1
+myeia>=0.4.8  # EIA API client
+yfinance>=0.2.18 # Yahoo Finance API client
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# Excel and Data Manipulation
+pyxlsb>=1.0.10    # For reading xlsb files
+openpyxl>=3.1.2   # For reading xlsx files
+
+# RData Integration
+pyreadr # For reading .RData files
+
+# Web Automation (alternative to Selenium)
+# playwright>=1.30.0 # For more robust web automation
+
+# Legacy ClickHouse Dependencies (commented out for reference)
+# clickhouse-connect>=0.6.0  # Official ClickHouse Python client (recommended)
+# clickhouse-sqlalchemy>=0.2.4  # SQLAlchemy dialect for ClickHouse
+# sqlalchemy>=2.0.0  # Required for clickhouse-sqlalchemy
+# clickhouse-driver>=0.2.6  # Alternative native driver for ClickHouse
+# asyncio-clickhouse>=0.1.0  # Async support for ClickHouse operations
+
+# Database Connection Pooling and Management
+#sqlalchemy-utils>=0.41.0  # Additional SQLAlchemy utilities
+

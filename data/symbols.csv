@@ -1,0 +1,317 @@
+symbol,source,description,label_y,float_expense_ratio,date_series_start,date_series_end
+CPIAUCSL,FRED,"Consumer Price Index for All
+Urban Consumers: All Items",Index 1982-1984=100,-1,1947-01-01,2025-03-01
+USREC,FRED,NBER based Recession Indicators,+1 or 0,-1,1900-01-01,2025-04-01
+UNRATE,FRED,Civilian Unemployment Rate U-3,Percent,-1,1948-01-01,2025-04-01
+PCEPI,FRED,"Personal Consumption Expenditures:
+Chain-type Price Index",Index 2012=100,-1,1959-01-01,2025-03-01
+CCSA,FRED,Continued Claims (Insured Unemployment),Number,-1,1967-01-07,2025-04-26
+CCNSA,FRED,"Continued Claims (Insured Unemployment, NSA)",Number,-1,1967-01-07,2025-04-26
+NPPTTL,FRED,Total Nonfarm Private Payroll Employment (ADP),Thousands,-1,2002-04-01,2022-05-01
+CEU0500000001,FRED,"All Employees, Total Private (NSA)",Thousands,-1,1939-01-01,2025-04-01
+U6RATE,FRED,Total unemployed + margin + part-time U-6,Percent,-1,1994-01-01,2025-04-01
+PAYNSA,FRED,All Employees: Total Nonfarm Payrolls (NSA),Thousands of Persons,-1,1939-01-01,2025-04-01
+TABSHNO,FRED,"Households and nonprofit
+organizations; total assets, Level",Billions of Dollars,-1,1945-10-01,2024-10-01
+HNONWPDPI,FRED,"Household Net Worth, percent Dispsable Income",Percent,-1,1946-10-01,2024-10-01
+INDPRO,FRED,Industrial Production Index,Index 2012=100,-1,1919-01-01,2025-03-01
+RRSFS,FRED,Real Retail and Food Services Sales,Millions of Dollars,-1,1992-01-01,2025-03-01
+RSALES,FRED,Real Retail Sales (DISCONTINUED),Millions of Dollars,-1,1947-01-01,2001-04-01
+W875RX1,FRED,"Real personal income
+excluding current transfer receipts",Billions of Chained 2009 Dollars,-1,1959-01-01,2025-03-01
+RPI,FRED,Real personal income,Billions of Chained 2009 Dollars,-1,1959-01-01,2025-03-01
+PCOPPUSDM,FRED,Global price of Copper,U.S. Dollars per Metric Ton,-1,1990-01-01,2025-03-01
+NOBL,yahoo,ProShares S&P 500 Dividend Aristocrats (NOBL),BATS Real Time Price,0.35,2013-10-10,2025-05-08
+SCHD,yahoo,Schwab U.S. Dividend Equity ETF,Dollars,0.06,2011-10-20,2025-05-08
+PFF,yahoo,iShares Preferred and Income Securities ETF,BATS Real Time Price,0.35,2007-03-30,2025-05-08
+HPI,yahoo,John Hancock Preferred Income Fund,BATS Real Time Price,0.35,2003-07-15,2025-05-08
+GSFTX,yahoo,Columbia Dividend Income Fund Institutional Class,Dollars,0.71,1998-03-04,2025-05-08
+LFMIX,yahoo,LoCorr Macro Strategies Fund Class I,Dollars,2,2011-04-06,2025-05-08
+LFMCX,yahoo,LoCorr Macro Strategies Fund Class C,Dollars,3,2011-04-06,2025-05-08
+LFMAX,yahoo,LoCorr Macro Strategies Fund Class A,Dollars,2.25,2011-04-06,2025-05-08
+LCSIX,yahoo,LoCorr Long/Short Commodity Strategies Fund Class I,Dollars,2.4,2012-01-17,2025-05-08
+BSV,yahoo,Vanguard Short-Term Bond Index Fund ETF Shares,Dollars,0.05,2007-04-10,2025-05-08
+VBIRX,yahoo,Vanguard Short-Term Bond Index Fund Admiral Shares,Dollars,0.07,2001-11-12,2025-05-08
+BIV,yahoo,Vanguard Intermediate-term Bond Index Fund ETF Shares,Dollars,0.05,2007-04-10,2025-05-08
+VFSUX,yahoo,Vanguard Short-Term Investment-Grade Fund Admiral Shares,Dollars,0.1,2001-02-12,2025-05-08
+LTUIX,yahoo,Thornburg Limited Term U.S. Government Fund Class I,Dollars,0.62,1996-07-05,2025-05-08
+PTTPX,yahoo,PIMCO Total Return Fund Class I-2,Dollars,0.81,2008-04-30,2025-05-08
+NERYX,yahoo,Loomis Sayles Core Plus Bond Fund Class Y,Dollars,0.48,1994-12-30,2025-05-08
+STIGX,yahoo,Virtus Seix Core Bond Fund Class I,Dollars,0.5,1992-06-08,2025-05-08
+HLGAX,yahoo,JPMorgan Government Bond Fund Class I,Dollars,0.48,1993-02-08,2025-05-08
+FTRGX,yahoo,Federated Hermes Total Return Government Bond Fund Institutional Shares,Dollars,0.33,2014-06-18,2025-05-08
+THIIX,yahoo,Thornburg Limited Term Income Fund Class I,Dollars,0.49,1996-07-05,2025-05-08
+PTTRX,yahoo,PIMCO Total Return Fund Institutional Class,Dollars,0.71,1987-05-11,2025-05-08
+BFIGX,yahoo,American Funds Inflation Linked Bond Fund Class F-2,Dollars,0.43,2015-01-23,2025-05-08
+VTWO,yahoo,Vanguard Russell 2000 Index Fund ETF Shares,Dollars,0.1,2010-09-22,2025-05-08
+EIFAX,yahoo,Eaton Vance Floating-Rate Advantage Fund Class I,Dollars,1.62,2008-03-17,2025-05-08
+ASDAX,yahoo,AAM/HIMCO Short Duration Fund Class A,Dollars,0.84,2014-07-01,2025-05-08
+TRBUX,yahoo,T. Rowe Price Ultra Short-Term Bond Fund,Dollars,0.32,2013-10-03,2025-05-08
+PRVIX,yahoo,T. Rowe Price Small-Cap Value Fund I Class,Dollars,0.3,2015-08-28,2025-05-08
+PRWCX,yahoo,T. Rowe Price Capital Appreciation Fund,Dollars,0.7,1986-06-30,2025-05-08
+ADOZX,yahoo,Alger Dynamic Opportunities Fund Class Z,Dollars,1.75,2010-12-29,2025-05-08
+MERFX,yahoo,The Merger Fund Investor Class,Dollars,1.99,1989-01-31,2025-05-08
+CMNIX,yahoo,Calamos Market Neutral Income Fund Institutional Class,Dollars,1.01,2000-05-10,2025-05-08
+CIHEX,yahoo,Calamos Hedged Equity Fund Class I ,Dollars,0.92,2015-01-02,2025-05-08
+IMPCH,FRED,"U.S. Imports of Goods by Customs
+Basis from China (Monthly, NSA)",Billions of U.S. Dollars,-1,1985-01-01,2025-03-01
+EXPCH,FRED,"U.S. Exports of Goods by F.A.S.
+Basis to China, Mainland (Monthly, NSA)",Billions of U.S. Dollars,-1,1985-01-01,2025-03-01
+IMPMX,FRED,"U.S. Imports of Goods by Customs
+Basis from Mexico (Monthly, NSA)",Billions of U.S. Dollars,-1,1985-01-01,2025-03-01
+EXPMX,FRED,"U.S. Exports of Goods by F.A.S.
+Basis to Mexico (Monthly, NSA)",Billions of U.S. Dollars,-1,1985-01-01,2025-03-01
+HSN1FNSA,FRED,"New One Family Houses Sold: United States (Monthly, NSA)",Thousands of Units,-1,1963-01-01,2025-03-01
+HNFSUSNSA,FRED,"New One Family Houses for Sale in the United States (Monthly, NSA)",Thousands of Units,-1,1963-01-01,2025-03-01
+BUSLOANS,FRED,"Commercial and Industrial Loans,
+ All Commercial Banks (Monthly, SA)",Billions of U.S. Dollars,-1,1947-01-01,2025-03-01
+TOTCI,FRED,"Commercial and Industrial Loans,
+ All Commercial Banks (Weekly, SA)",Billions of U.S. Dollars,-1,1973-01-03,2025-04-23
+BUSLOANSNSA,FRED,"Commercial and Industrial Loans,
+ All Commercial Banks (Monthly, NSA)",Billions of U.S. Dollars,-1,1947-01-01,2025-03-01
+REALLNNSA,FRED,"Real Estate Loans,
+All Commercial Banks (Monthly, NSA)",Billions of U.S. Dollars,-1,1947-01-01,2025-03-01
+REALLN,FRED,"Real Estate Loans,
+All Commercial Banks (Monthly, SA)",Billions of U.S. Dollars,-1,1947-01-01,2025-03-01
+RELACBW027NBOG,FRED,"Real Estate Loans,
+All Commercial Banks (Weekly, NSA)",Billions of U.S. Dollars,-1,1973-01-03,2025-04-23
+RELACBW027SBOG,FRED,"Real Estate Loans,
+All Commercial Banks (Weekly, SA)",Billions of U.S. Dollars,-1,1973-01-03,2025-04-23
+RREACBM027NBOG,FRED,"Real Estate Loans: Residential Real Estate Loans,
+All Commercial Banks (Monthly, NSA)",Billions of U.S. Dollars,-1,2004-06-01,2025-03-01
+RREACBM027SBOG,FRED,"Real Estate Loans: Residential Real Estate Loans,
+All Commercial Banks (Monthly, SA)",Billions of U.S. Dollars,-1,2004-06-01,2025-03-01
+RREACBW027SBOG,FRED,"Real Estate Loans: Residential Real Estate Loans,
+All Commercial Banks (Weekly, SA)",Billions of U.S. Dollars,-1,2004-06-02,2025-04-23
+RREACBW027NBOG,FRED,"Real Estate Loans: Residential Real Estate Loans,
+All Commercial Banks (Weekly, NSA)",Billions of U.S. Dollars,-1,2004-06-02,2025-04-23
+MORTGAGE30US,FRED,30-Year Fixed Rate Mortgage Average in the United States,Percent,-1,1971-04-02,2025-05-08
+CONSUMERNSA,FRED,"Consumer Loans, All Commercial Banks",Billions of U.S. Dollars,-1,1947-01-01,2025-03-01
+TOTLLNSA,FRED,"Loans and Leases in Bank Credit,
+All Commercial Banks",Billions of U.S. Dollars,-1,1973-01-03,2025-04-23
+DPSACBW027SBOG,FRED,"Deposits, All Commercial Banks",Billions of U.S. Dollars,-1,1973-01-03,2025-04-23
+DRCLACBS,FRED,"Delinquency Rate on Consumer Loans,
+All Commercial Banks, SA",Percent,-1,1987-01-01,2024-10-01
+TOTCINSA,FRED,"Commercial and Industrial Loans,
+All Commercial Banks (Weekly, NSA)",Billions of U.S. Dollars,-1,1973-01-03,2025-04-23
+SRPSABSNNCB,FRED,"Nonfinancial corporate business;
+security repurchase agreements;
+asset, Level (NSA)",Billions of U.S. Dollars,-1,1945-10-01,2024-10-01
+ASTLL,FRED,"All sectors; total loans; liability, Level (NSA)",Billions of U.S. Dollars,-1,1945-10-01,2024-10-01
+FBDILNECA,FRED,"Domestic financial sectors; depository institution
+loans n.e.c.; asset, Level (NSA)",Billions of U.S. Dollars,-1,1945-10-01,2024-10-01
+ASOLAL,FRED,"All sectors; other loans and advances;
+liability, Level (NSA)",Millions of U.S. Dollars,-1,1945-10-01,2024-10-01
+ASTMA,FRED,"All sectors; total mortgages; asset, Level (NSA)",Billions of U.S. Dollars,-1,1945-10-01,2024-10-01
+ASHMA,FRED,"All sectors; home mortgages; asset, Level (NSA)",Billions of U.S. Dollars,-1,1945-10-01,2024-10-01
+ASMRMA,FRED,"All sectors; multifamily residential
+mortgages; asset, Level (NSA)",Billions of U.S. Dollars,-1,1945-10-01,2024-10-01
+ASCMA,FRED,"All sectors; commercial mortgages;
+asset, Level  (NSA)",Billions of U.S. Dollars,-1,1945-10-01,2024-10-01
+ASFMA,FRED,"All sectors; farm mortgages;
+asset, Level (NSA)",Billions of U.S. Dollars,-1,1945-10-01,2024-10-01
+CCLBSHNO,FRED,"Households and nonprofit organizations;
+consumer credit; liability, Level (NSA)",Billions of U.S. Dollars,-1,1945-10-01,2024-10-01
+FBDSILQ027S,FRED,"Domestic financial sectors
+debt securities; liability, Level (NSA)",Millions of U.S. Dollars,-1,1945-10-01,2024-10-01
+FBLL,FRED,"Domestic financial sectors
+loans; liability, Level (NSA)",Millions of U.S. Dollars,-1,1945-10-01,2024-10-01
+NCBDBIQ027S,FRED,"Nonfinancial corporate
+business; debt securities; liability, Level",Millions of Dollars,-1,1945-10-01,2024-10-01
+DGS10,FRED,10-Year Treasury Constant Maturity Rate,Percent,-1,1962-01-02,2025-05-07
+TNX,yahoo,CBOE Interest Rate 10 Year T No,Percent,-1,1962-01-02,2025-05-08
+CLF,yahoo,Crude Oil Futures,Dollars/bbl,-1,2000-08-23,2025-05-08
+DGS30,FRED,10-Year Treasury Constant Maturity Rate,Percent,-1,1977-02-15,2025-05-07
+DGS1,FRED,1-Year Treasury Constant Maturity Rate,Percent,-1,1962-01-02,2025-05-07
+DGS2,FRED,2-Year Treasury Constant Maturity Rate,Percent,-1,1976-06-01,2025-05-07
+TB3MS,FRED,3-Month Treasury Bill: Secondary Market Rate (Monthly),Percent,-1,1934-01-01,2025-04-01
+DTB3,FRED,3-Month Treasury Bill: Secondary Market Rate (Daily),Percent,-1,1954-01-04,2025-05-07
+IRX,yahoo,CBOE 13 WEEK TREASURY BILL,Percent,-1,1960-01-04,2025-05-08
+DCOILWTICO,FRED,"Crude Oil Prices: West Texas Intermediate (WTI)
+Cushing, Oklahoma",Dollars per Barrel (Not Adjusted),-1,1986-01-02,2025-05-05
+DCOILBRENTEU,FRED,Crude Oil Prices: Brent - Europe,Dollars per Barrel (Not Adjusted),-1,1987-05-20,2025-05-02
+NEWORDER,FRED,Manufacturers' New Orders: Nondefense Capital Goods Excluding Aircraft,Millions of Dollars,-1,1992-02-01,2025-03-01
+ALTSALES,FRED,Light Weight Vehicle Sales: Autos and Light Trucks,Millions of Units,-1,1976-01-01,2025-03-01
+ICSA,FRED,Initial Jobless Claims,Number,-1,1967-01-07,2025-05-03
+^GSPC,yahoo,S&P 500,Dollars,-1,1927-12-30,2025-05-08
+FXAIX,yahoo,Fidelity 500 Index Fund,Dollars,0.01,2011-05-04,2025-05-08
+FTIHX,yahoo,"Fidelity Total
+International Index Fund",Dollars,0.06,2016-06-16,2025-05-08
+MDIZX,yahoo,MFS International Diversification Fund Class R6,Dollars,0.7,2017-10-05,2025-05-08
+DODIX,yahoo,Dodge & Cox Income Fund,Dollars,0.42,1988-12-30,2025-05-08
+RLG,yahoo,Russell 1000 Growth ETF,Dollars,-1,2002-09-30,2025-05-08
+DJI,yahoo,Dow Jones Industrial Average,Dollars,-1,1992-01-02,2025-05-08
+^STOXX50E,yahoo,Euro Stoxx 50,Euros,-1,2007-03-30,2025-05-08
+EFA,yahoo,iShares MSCI EAFE ETF,Dollars,-1,2001-08-27,2025-05-08
+GDP,FRED,Gross Domestic Product,Billions of Dollars,-1,1947-01-01,2025-01-01
+FNDEFX,FRED,"Federal Government: Nondefense
+Consumption Expenditures and Gross Investment (SA, Annual Rate)",Billions of Dollars,-1,1947-01-01,2025-01-01
+FDEFX,FRED,"Federal Government: National Defense
+Consumption Expenditures and Gross Investment (SA, Annual Rate)",Billions of Dollars,-1,1947-01-01,2025-01-01
+GDPNOW,FRED,Fed Atlanta GDPNow,Percent Change at Annual Rate (SA),-1,2011-07-01,2025-04-01
+GDPC1,FRED,Real Gross Domestic Product,Billions of Dollars,-1,1947-01-01,2025-01-01
+GDPDEF,FRED,Gross Domestic Product: Implicit Price Deflator,Index 2012=100,-1,1947-01-01,2025-01-01
+VIG,yahoo,Vanguard Dividend Appreciation ETF,Dollars,-1,2006-05-02,2025-05-08
+WLRRAL,FRED,"Liabilities and Capital:
+Liabilities: Reverse Repurchase Agreements:
+Wednesday Level (NSA)",Billions of U.S. Dollars,-1,2002-12-18,2025-05-07
+FEDFUNDS,FRED,Effective Federal Funds Rate,Percent,-1,1954-07-01,2025-04-01
+GPDI,FRED,Gross Private Domestic Investment,Billions of Dollars,-1,1947-01-01,2025-01-01
+W790RC1Q027SBEA,FRED,Net domestic investment: Private: Domestic busines,Billions of Dollars,-1,1960-01-01,2025-01-01
+MZMV,FRED, Velocity of MZM Money Stock,Ratio,-1,1959-01-01,2020-10-01
+M1,FRED,M1 Money Stock,Billions of Dollars,-1,1975-01-06,2021-02-01
+M2,FRED,M2 Money Stock,Billions of Dollars,-1,1980-11-03,2021-02-01
+OPHNFB,FRED,"Nonfarm Business Sector: Real Output Per Hour of All Persons, SA",Index 2009 = 100,-1,1947-01-01,2025-01-01
+IPMAN,FRED,Industrial Production: Manufacturing (NAICS),Index 2012 = 100,-1,1972-01-01,2025-03-01
+IWD,yahoo,iShares Russell 1000 Value ETF,Dollars,-1,2000-05-26,2025-05-08
+GS5,FRED,5-Year Treasury Constant Maturity Rate,Percent,-1,1953-04-01,2025-04-01
+PSAVERT,FRED,Personal Saving Rate,Percent,-1,1959-01-01,2025-03-01
+VIXCLS,FRED,CBOE Volatility Index,Index,-1,1990-01-02,2025-05-08
+VXX,yahoo,iPath Series B S&P 500 VIX Short-Term Futures ETN,Index,-1,2018-01-25,2025-05-08
+HOUST1F,FRED,Privately Owned Housing Starts: 1-Unit Structures,Thousands of units,-1,1959-01-01,2025-03-01
+GFDEBTN,FRED,Federal Debt: Total Public Debt,Millions of Dollars,-1,1966-01-01,2024-10-01
+HOUST,FRED,"Housing Starts: Total: New Privately
+Owned Housing Units Started, SA",Thousands of Units,-1,1959-01-01,2025-03-01
+HOUSTNSA,FRED,"Housing Starts: Total: New Privately
+Owned Housing Units Started, NSA",Thousands of Units,-1,1959-01-01,2025-03-01
+EXHOSLUSM495S,FRED,Existing Home Sales,Number of Units,-1,2024-03-01,2025-03-01
+MSPUS,FRED,"Median Sales Price of
+Houses Sold for the United States (NSA)",Dollars,-1,1963-01-01,2025-01-01
+UMDMNO,FRED,Manufacturers' New Orders: Durable Goods (NSA),Dollars,-1,1992-02-01,2025-03-01
+DGORDER,FRED,Manufacturers' New Orders: Durable Goods (SA),Dollars,-1,1992-02-01,2025-03-01
+CSUSHPINSA,FRED,S&P/Case-Shiller U.S. National Home Price Index (NSA),Index Jan 2000=100,-1,1987-01-01,2025-02-01
+GFDEGDQ188S,FRED,"Federal Debt: Total Public Debt as
+Percent of Gross Domestic Product",Percent of GDP,-1,1966-01-01,2024-10-01
+FYFSD,FRED,Federal Surplus or Deficit,Millions of Dollars,-1,1901-06-30,2024-09-30
+FYFSGDA188S,FRED,Federal Surplus or Deficit [-] as Percent of Gross Domestic Product,Percent of GDP,-1,1929-01-01,2024-01-01
+GDX,yahoo,VanEck Vectors Gold Miners ETF,Dollars,0.53,2006-05-22,2025-05-08
+XLE,yahoo,Energy Select Sector SPDR Fund,Dollars,0.13,1998-12-22,2025-05-08
+GSG,yahoo,iShares S&P GSCI Commodity-Indexed Trust,Dollars,0,2006-07-21,2025-05-08
+WALCL,FRED,All Federal Reserve Banks: Total Assets,Billions of Dollars,-1,2002-12-18,2025-05-07
+OUTMS,FRED,Manufacturing Sector: Real Output,Index 2009=100,-1,1987-01-01,2025-01-01
+MANEMP,FRED,All Employees: Manufacturing,Thousands of Persons,-1,1939-01-01,2025-04-01
+PRS30006163,FRED,Manufacturing Sector: Real Output Per Person,Index 2009=100,-1,1987-01-01,2025-01-01
+BAMLC0A3CA,FRED,ICE BofAML US Corporate A Option-Adjusted Spread,Percent,-1,1996-12-31,2025-05-08
+AAA,FRED,Moody's Seasoned Aaa Corporate Bond Yield,Percent,-1,1919-01-01,2025-04-01
+SOFR,FRED,Secured Overnight Financing Rate,Percent,-1,2018-04-03,2025-05-08
+SOFRVOL,FRED,Secured Overnight Financing Volume,Billions of U.S. Dollars,-1,2018-04-03,2025-05-08
+SOFR99,FRED,"Secured Overnight Financing Rate:
+99th Percentile",Percent,-1,2018-04-03,2025-05-08
+SOFR75,FRED,"Secured Overnight Financing Rate:
+75th Percentile",Percent,-1,2018-04-03,2025-05-08
+SOFR25,FRED,"Secured Overnight Financing Rate:
+25th Percentile",Percent,-1,2018-04-03,2025-05-08
+SOFR1,FRED,"Secured Overnight Financing Rate:
+1st Percentile",Percent,-1,2018-04-03,2025-05-08
+OBFR,FRED,Overnight Bank Funding Rate,Percent,-1,2016-03-01,2025-05-08
+OBFR99,FRED,"Overnight Bank Funding Rate:
+99th Percentile",Percent,-1,2016-03-01,2025-05-08
+OBFR75,FRED,"Overnight Bank Funding Rate:
+75th Percentile",Percent,-1,2016-03-01,2025-05-08
+OBFR25,FRED,"Overnight Bank Funding Rate:
+25th Percentile",Percent,-1,2016-03-01,2025-05-08
+OBFR1,FRED,"Overnight Bank Funding Rate:
+1st Percentile",Percent,-1,2016-03-01,2025-05-08
+RPONTSYD,FRED,"Overnight Repurchase Agreements:
+Treasury Securities Purchased by
+the Federal Reserve in the Temporary
+Open Market Operations ",Billions of US Dollars,-1,2000-01-03,2025-05-08
+IOER,FRED,Interest Rate on Excess Reserves,Percent,-1,2008-10-09,2021-07-28
+WRESBAL,FRED,Reserve Balances with Federal Reserve Banks,Billions of Dollars,-1,1984-01-04,2025-05-07
+EXCSRESNW,FRED,Excess Reserves of Depository Institutions,Billions of Dollars,-1,1984-02-08,2020-09-09
+ECBASSETS,FRED,Central Bank Assets for Euro Area (11-19 Countries),Billions of Euros,-1,1998-12-01,2020-01-01
+EUNNGDP,FRED, Gross Domestic Product (Euro/ECU series) for Euro Area (19 Countries),Billions of Euros,-1,1995-01-01,2024-10-01
+CEU0600000007,FRED,"Average Weekly Hours of Production 
+ and Nonsupervisory Employees: Goods-Producing",Hours,-1,1947-01-01,2025-04-01
+CURRENCY,FRED,Currency Component of M1 (Seasonally Adjusted),Billions of Dollars,-1,1975-01-06,2021-02-01
+WCURRNS,FRED,Currency Component of M1,Billions of Dollars,-1,1975-01-06,2025-03-31
+BOGMBASE,FRED,Monetary Base; Total,Billions of Dollars,-1,1959-01-01,2025-03-01
+PRS88003193,FRED,Nonfinancial Corporations Sector: Unit Profits,Index 2012 = 100,-1,1947-01-01,2024-10-01
+PPIACO,FRED,Producer Price Index for All Commodities,Index 1982 = 100,-1,1913-01-01,2025-03-01
+PCUOMFGOMFG,FRED,Producer Price Index by Industry: Total Manufacturing Industries,Index 1982 = 100,-1,1984-12-01,2025-03-01
+POPTHM,FRED,Population (U.S.),Thousands,-1,1959-01-01,2025-03-01
+POPTHM,FRED,Population (U.S.),Thousands,-1,1959-01-01,2025-03-01
+CLF16OV,FRED,"Civilian Labor Force Level, SA ",Thousands,-1,1948-01-01,2025-04-01
+LNU01000000,FRED,"Civilian Labor Force Level, NSA",Thousands,-1,1948-01-01,2025-04-01
+LNU03000000,FRED,Unemployment Level (NSA),Thousands,-1,1948-01-01,2025-04-01
+UNEMPLOY,FRED,"Unemployment Level, seasonally adjusted",Thousands,-1,1948-01-01,2025-04-01
+RSAFS,FRED,Advance Retail Sales: Retail and Food Services,Thousands,-1,1992-01-01,2025-03-01
+FRGSHPUSM649NCIS,FRED,Cass Freight Index: Shipments,Index Jan 1990 = 1,-1,1990-01-01,2025-03-01
+BOPGTB,FRED,"Trade Balance: Goods,
+Balance of Payments Basis (SA)",Millions of dollars,-1,1992-01-01,2025-03-01
+TERMCBPER24NS,FRED,"Finance Rate on Personal Loans at
+Commercial Banks, 24 Month Loan",Percent,-1,1972-02-01,2025-02-01
+A065RC1A027NBEA,FRED,Personal income (NSA),Billions of Dollars,-1,1929-01-01,2024-01-01
+PI,FRED,Personal income (SA),Billions of Dollars,-1,1959-01-01,2025-03-01
+PCE,FRED,"Personal Consumption
+Expenditures (SA)",Billions of Dollars,-1,1959-01-01,2025-03-01
+A053RC1Q027SBEA,FRED,"National income: Corporate
+profits before tax (without IVA and CCAdj)",Billions of dollars,-1,1947-01-01,2024-10-01
+CPROFIT,FRED,"Corporate Profits with Inventory
+Valuation Adjustment (IVA) and
+Capital Consumption Adjustment (CCAdj)",Billions of dollars,-1,1947-01-01,2024-10-01
+SPY,yahoo,SPDR S&P 500 ETF,Dollars,-1,1993-01-29,2025-05-08
+MDY,yahoo,SPDR S&P MidCap 400 ETF,Dollars,-1,1995-05-04,2025-05-08
+EES,yahoo,WisdomTree US SmallCap Earnings ETF,Dollars,0.38,2007-02-23,2025-05-08
+IJR,yahoo,iShares Core S&P Small-Cap ETF,Dollars,0.05,2000-05-26,2025-05-08
+VGSTX,yahoo,Vanguard STAR Inv,Dollars,0.32,1985-03-29,2025-05-08
+VFINX,yahoo,Vanguard 500 Index Investor,Dollars,0.14,1980-01-02,2025-05-08
+VOE,yahoo,Vanguard Mid-Cap Value ETF,Dollars,0.07,2006-08-25,2025-05-08
+VOT,yahoo,Vanguard Mid-Cap Growth ETF,Dollars,0.07,2006-08-25,2025-05-08
+TMFGX,yahoo,Motley Fool Great America Investor,Dollars,1.16,2019-01-02,2025-05-08
+IWM,yahoo,iShares Russell 2000,Dollars,0.19,2000-05-26,2025-05-08
+ONEQ,yahoo,Fidelity NASDAQ Composite Index Tracking Stock Fund,Dollars,0.21,2003-10-01,2025-05-08
+FSMAX,yahoo,Fidelity Extended Market Index Fund ,Dollars,0.03,2011-09-08,2025-05-08
+FXNAX,yahoo,Fidelity U.S. Bond Index Fund,Dollars,0.03,2011-05-04,2025-05-08
+HAINX,yahoo,Harbor International Institutional,Dollars,0.81,1987-12-29,2025-05-08
+HNACX,yahoo,"Harbor Capital Appreciation
+Fund Retirement Class",Dollars,0.59,2016-03-01,2025-05-08
+VEU,yahoo,Vanguard FTSE All-Wld ex-US ETF,Dollars,0.11,2007-03-08,2025-05-08
+VEIRX,yahoo,"Vanguard Equity-Income
+Fund Admiral Shares",Dollars,0.19,2001-08-13,2025-05-08
+BIL,yahoo,SPDR Blmbg Barclays 1-3 Mth T-Bill ETF,Dollars,0.14,2007-05-30,2025-05-08
+IVOO,yahoo,Vanguard S&P Mid-Cap 400 ETF,Dollars,0.15,2010-09-09,2025-05-08
+VO,yahoo,Vanguard Mid-Cap ETF,Dollars,0.05,2004-01-30,2025-05-08
+CZA,yahoo,Invesco Zacks Mid-Cap ETF,Dollars,0.15,2007-04-03,2025-05-08
+VYM,yahoo,Vanguard High Dividend Yield ETF,Dollars,0.08,2006-11-16,2025-05-08
+ACWI,yahoo,iShares MSCI ACWI ETF,Dollars,0.32,2008-03-28,2025-05-08
+SLY,yahoo,SPDR S&P 600 Small Cap,Dollars,-1,2008-01-02,2025-05-08
+QQQ,yahoo,Invesco QQQ Trust,Dollars,-1,1999-03-10,2025-05-08
+HYMB,yahoo,SPDR Nuveen S&P High Yield Municipal Bond ETF,Dollars,-1,2011-04-14,2025-05-08
+GOLD,yahoo,Barrick Gold Corporation,Dollars,0,1985-02-13,2025-05-08
+BKR,yahoo,Baker Hughes Company,Dollars,-1,1987-04-06,2025-05-08
+SLB,yahoo,Schlumberger Limited,Dollars,-1,1981-12-31,2025-05-08
+HAL,yahoo,Halliburton Company,Dollars,-1,1972-06-01,2025-05-08
+IP,yahoo,International Paper Company,Dollars,-1,1962-01-02,2025-05-08
+PKG,yahoo,Packaging Corporation of America,Dollars,-1,2000-01-28,2025-05-08
+UPS,yahoo,"United Parcel Service, Inc.",Dollars,-1,1999-11-10,2025-05-08
+FDX,yahoo,FedEx Corporation,Dollars,-1,1978-04-12,2025-05-08
+T,yahoo,AT&T,Dollars,-1,1983-11-21,2025-05-08
+VZ,yahoo,Verizon,Dollars,-1,1983-11-21,2025-05-08
+PET.A103600001.M,EIA,"U.S. Total Gasoline Retail Sales by Refiners, Monthly",Thousand Gallons per Day,-1,1990-01-01,1983-01-01
+PET.A123600001.M,EIA,"U.S. Regular Gasoline Retail Sales
+by Refiners, Monthly",Thousand Gallons per Day,-1,1990-01-01,1983-01-01
+PET.A143B00001.M,EIA,"U.S. Midgrade Gasoline Retail Sales
+by Refiners, Monthly",Thousand Gallons per Day,-1,1990-01-01,1994-01-01
+PET.A133B00001.M,EIA,"U.S. Premium Gasoline Bulk Sales
+(Volume) by Refiners, Monthly",Thousand Gallons per Day,-1,1990-01-01,1994-01-01
+TOTAL.OGNRPUS.M,EIA,"Crude Oil and Natural Gas Rotary Rigs in Operation, Total, Monthly",Number of rigs,-1,1990-01-01,1973-01-01
+E_ERTRRO_XR0_NUS_C,EIA,"Crude Oil Rotary Rigs in Operation, Monthly",Number of rigs,-1,1990-01-01,1973-01-01
+E_ERTRRG_XR0_NUS_C,EIA,"Natural Gas Rotary Rigs in Operation, Monthly",Number of rigs,-1,1990-01-01,1973-01-01
+BKRTotal,BKR,Total Rig Count,Number of rigs,-1,1987-07-17,2022-03-25
+BKRGas,BKR,Gas Rig Count,Number of rigs,-1,2022-03-25,1987-07-17
+BKROil,BKR,Oil Rig Count,Number of rigs,-1,2022-03-25,1987-07-17
+FARMINCOME,USDA,Net Farm Income,Billions of Dollars,-1,2012-01-01,2019-01-01
+OPEARNINGSPERSHARE,SILVERBLATT,Operating Earnings per Share,Dollars,-1,1988-03-30,2022-12-30
+AREARNINGSPERSHARE,SILVERBLATT,As-Reported Earnings per Share,Dollars,-1,1988-03-30,2022-12-30
+CASHDIVIDENDSPERSHR,SILVERBLATT,Cash Dividends per Share,Dollars,-1,1988-03-30,2022-12-30
+SALESPERSHR,SILVERBLATT,Sales per Share,Dollars,-1,1988-03-30,2022-12-30
+BOOKVALPERSHR,SILVERBLATT,Book value per Share,Dollars,-1,1988-03-30,2022-12-30
+CAPEXPERSHR,SILVERBLATT,Cap ex per Share,Dollars,-1,1988-03-30,2022-12-30
+PRICE,SILVERBLATT,Price,Dollars,-1,1988-03-30,2022-12-30
+OPEARNINGSTTM,SILVERBLATT,TTM Operating Earnings,Dollars,-1,1988-03-30,2022-12-30
+AREARNINGSTTM,SILVERBLATT,TTM Reported Earnings,Dollars,-1,1988-03-30,2022-12-30
+FINRAMarginDebt,FINRA,Margin Debt,Dollars,-1,1959-01-31,2023-06-30
+FINRAFreeCreditMargin,FINRA,Free Credit Balances in Customers' Securities Margin Accounts,Dollars,-1,1959-01-31,1900-01-01
+OCCEquityVolume,OCC,Equity Options Volume,Millions of Options/Day,-1,1973-12-31,2019-09-25
+OCCNonEquityVolume,OCC,Non-Equity Options Volume,Millions of Options/Day,-1,1973-12-31,2019-09-25

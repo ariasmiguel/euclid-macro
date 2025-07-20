@@ -101,8 +101,8 @@ class YahooFetcher(BaseDataFetcher):
         
         for attempt in range(self.max_retries):
             try:
-                # Download the data using yfinance
-                df = yf.download(symbol, start=start_str, end=end_str)
+                # Download the data using yfinance with explicit auto_adjust parameter
+                df = yf.download(symbol, start=start_str, end=end_str, auto_adjust=True)
                 
                 if df.empty:
                     self.logger.warning(f"No data returned for Yahoo symbol {symbol}")
@@ -135,7 +135,7 @@ class YahooFetcher(BaseDataFetcher):
         self.logger.info("Starting Yahoo Finance data collection")
         
         # Filter for Yahoo Finance symbols
-        yahoo_symbols = symbols_df[symbols_df['string.source'].str.lower() == 'yahoo'].copy()
+        yahoo_symbols = symbols_df[symbols_df['source'].str.lower() == 'yahoo'].copy()
         
         if yahoo_symbols.empty:
             self.logger.warning("No Yahoo Finance symbols found in symbols DataFrame")
@@ -150,8 +150,8 @@ class YahooFetcher(BaseDataFetcher):
         failed_fetches = 0
         
         for idx, (_, row) in enumerate(yahoo_symbols.iterrows(), 1):
-            symbol = row['string.symbol']
-            start_date_str = row['date.series.start']
+            symbol = row['symbol']
+            start_date_str = row['date_series_start']
             
             try:
                 start_date = datetime.strptime(start_date_str, '%Y-%m-%d')
@@ -213,9 +213,9 @@ if __name__ == "__main__":
     
     # Test with multiple symbols
     test_symbols_df = pd.DataFrame({
-        'string.symbol': ['AAPL', 'GOOGL', 'MSFT'],
-        'string.source': 'yahoo',
-        'date.series.start': ['2023-01-01', '2023-01-01', '2023-01-01']
+        'symbol': ['AAPL', 'GOOGL', 'MSFT'],
+        'source': 'yahoo',
+        'date_series_start': ['2023-01-01', '2023-01-01', '2023-01-01']
     })
     
     batch_data = fetcher.fetch_batch(test_symbols_df)

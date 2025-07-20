@@ -2,8 +2,7 @@
 Main Data Collection Pipeline Entry Point
 
 This script provides a simple entry point for running the complete
-data collection pipeline using DuckDB and bronze layer exports
-with incremental loading support.
+data collection pipeline with simplified parquet storage.
 """
 
 import argparse
@@ -12,8 +11,7 @@ import sys
 from datetime import datetime
 
 # Import the main pipeline class
-from src_pipeline.pipelines.data_collection import DataCollectionPipeline
-from src_pipeline.core.date_utils import DateUtils
+from src.data_collection import DataCollectionPipeline
 
 # Set up logging
 logging.basicConfig(
@@ -27,15 +25,12 @@ def main():
     Main function that orchestrates the entire data collection pipeline.
     """
     parser = argparse.ArgumentParser(
-        description='Bristol Gate Data Collection Pipeline with Incremental Loading',
+        description='Euclid Macro Data Collection Pipeline',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-    python run_data_collection.py                                 # Incremental loading (default)
-    python run_data_collection.py --full-refresh                  # Full refresh (reload all data)
-    python run_data_collection.py --incremental                   # Explicit incremental mode
+    python run_data_collection.py                                 # Collect from all sources
     python run_data_collection.py --sources yahoo,fred,baker      # Only collect from specific sources
-    python run_data_collection.py --sources yahoo --full-refresh  # Full refresh for Yahoo only
 
 Available Sources:
     • yahoo     - Yahoo Finance stock/ETF data
@@ -45,20 +40,16 @@ Available Sources:
     • finra     - FINRA margin statistics
     • sp500     - S&P 500 earnings/estimates (Silverblatt)
     • usda      - USDA agricultural data
+    • occ       - OCC options and futures volume data
 
 Features:
-    • Incremental loading: Only fetches data newer than existing data
+    • Simple parquet storage: One file per source + combined file
     • Source filtering: Test specific sources during development
     • Respects API rate limits (especially important for FRED)
-    • Append-only bronze layer for complete audit trail
-    • Fast pipeline execution with optimal DuckDB storage
+    • Fast pipeline execution with optimal parquet storage
         """
     )
     
-    parser.add_argument('--incremental', action='store_true', default=True,
-                       help='Use incremental loading (default)')
-    parser.add_argument('--full-refresh', action='store_true',
-                       help='Perform full refresh (reload all data)')
     parser.add_argument('--sources', type=str,
                        help='Comma-separated list of sources to collect (e.g., yahoo,fred,baker). Leave empty for all sources.')
     
@@ -70,16 +61,12 @@ Features:
         allowed_sources = [source.strip() for source in args.sources.split(',')]
         logger.info(f"🎯 Source filtering: {', '.join(allowed_sources)}")
     
-    # Determine incremental mode
-    incremental_mode = not args.full_refresh
-    
-    logger.info("🚀 Bristol Gate Data Collection Pipeline")
-    logger.info(f"⏰ Started at: {DateUtils.format_current_datetime()}")
-    logger.info(f"📋 Mode: {'INCREMENTAL' if incremental_mode else 'FULL REFRESH'}")
+    logger.info("🚀 Euclid Macro Data Collection Pipeline")
+    logger.info(f"⏰ Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
     try:
         # Initialize and run the data collection pipeline
-        pipeline = DataCollectionPipeline(incremental=incremental_mode, allowed_sources=allowed_sources)
+        pipeline = DataCollectionPipeline(allowed_sources=allowed_sources)
         success = pipeline.run_full_pipeline()
         
         if not success:
@@ -88,11 +75,8 @@ Features:
         else:
             logger.info("🎉 Data collection pipeline completed successfully!")
             logger.info("📊 Data is now available in:")
-            logger.info("   • DuckDB staging tables (bristol_gate.duckdb)")
-            logger.info("   • Bronze layer parquet files (data/bronze/)")
-            
-            if incremental_mode:
-                logger.info("💡 Tip: Use --full-refresh to reload all data if needed")
+            logger.info("   • Individual source files: data/raw/{source}_{timestamp}.parquet")
+            logger.info("   • Combined file: data/raw/all_sources_combined_latest.parquet")
             
     except KeyboardInterrupt:
         logger.info("⏹️  Pipeline interrupted by user")

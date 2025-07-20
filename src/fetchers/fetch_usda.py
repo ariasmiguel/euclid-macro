@@ -32,7 +32,7 @@ class USDAFetcher(BaseDataFetcher):
     utilities to fetch and standardize USDA agricultural data.
     """
     
-    def __init__(self, download_dir: str = "data/usda"):
+    def __init__(self, download_dir: str = "data/raw/usda"):
         """
         Initialize USDA fetcher.
         
@@ -74,9 +74,9 @@ class USDAFetcher(BaseDataFetcher):
         self.logger.info("USDA fetches all data at once, delegating to fetch_batch")
         # Create a dummy symbols_df for compatibility
         dummy_symbols_df = pd.DataFrame({
-            'string.symbol': [self.default_symbol_name],
-            'string.source': ['usda'],
-            'date.series.start': [start_date.strftime('%Y-%m-%d')]
+            'symbol': [self.default_symbol_name],
+            'source': ['usda'],
+            'date_series_start': [start_date.strftime('%Y-%m-%d')]
         })
         return self.fetch_batch(dummy_symbols_df)
     

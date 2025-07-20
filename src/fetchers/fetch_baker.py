@@ -9,7 +9,7 @@ Refactored to use BaseDataFetcher and utility classes to eliminate code duplicat
 
 import pandas as pd
 import os
-from datetime import datetime
+from datetime import datetime, date
 import time
 from selenium.webdriver.common.by import By
 from typing import Optional
@@ -29,14 +29,14 @@ class BakerHughesFetcher(BaseDataFetcher):
     utilities to fetch and standardize Baker Hughes rig count data.
     """
     
-    def __init__(self, download_dir: str = "data/baker_hughes"):
+    def __init__(self, download_dir: str = "data/raw/baker"):
         """
         Initialize Baker Hughes fetcher.
         
         Args:
             download_dir: Directory for downloaded files
         """
-        super().__init__("baker_hughes")
+        super().__init__("baker")
         
         # Initialize utility classes
         self.web_scraper = WebScrapingUtils()
@@ -70,9 +70,9 @@ class BakerHughesFetcher(BaseDataFetcher):
         self.logger.info("Baker Hughes fetches all data at once, delegating to fetch_batch")
         # Create a dummy symbols_df for compatibility
         dummy_symbols_df = pd.DataFrame({
-            'string.symbol': ['BAKER_HUGHES_RIG_COUNT'],
-            'string.source': ['baker'],
-            'date.series.start': [start_date.strftime('%Y-%m-%d')]
+            'symbol': ['BAKER_HUGHES_RIG_COUNT'],
+            'source': ['baker'],
+            'date_series_start': [start_date.strftime('%Y-%m-%d')]
         })
         return self.fetch_batch(dummy_symbols_df)
     
@@ -234,8 +234,17 @@ class BakerHughesFetcher(BaseDataFetcher):
                 self.logger.error("Excel file is empty or could not be read")
                 return pd.DataFrame()
             
-            # Process date column using utility method
-            df = self.excel_processor.convert_excel_dates(df)
+            # Check if date column already contains datetime objects
+            if 'Date' in df.columns:
+                # Check if the date column is already in datetime format
+                sample_date = df['Date'].iloc[0]
+                if isinstance(sample_date, (datetime, date)) or (isinstance(sample_date, str) and '-' in str(sample_date)):
+                    # Date is already in proper format, just convert to date objects
+                    df['Date'] = pd.to_datetime(df['Date']).dt.date
+                    self.logger.info("Date column already in proper format, converted to date objects")
+                else:
+                    # Date is in Excel serial format, convert using utility method
+                    df = self.excel_processor.convert_excel_dates(df, date_columns=['Date'])
             
             self.logger.info(f"Successfully processed Excel file with {len(df)} rows")
             return df

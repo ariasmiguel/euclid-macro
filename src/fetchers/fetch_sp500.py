@@ -28,7 +28,7 @@ class SP500Fetcher(BaseDataFetcher):
     utilities to fetch and standardize S&P 500 Silverblatt data.
     """
     
-    def __init__(self, download_dir: str = "data/sp500"):
+    def __init__(self, download_dir: str = "data/raw/sp500"):
         """
         Initialize S&P 500 fetcher.
         
@@ -68,9 +68,9 @@ class SP500Fetcher(BaseDataFetcher):
         self.logger.info("S&P 500 fetches all data at once, delegating to fetch_batch")
         # Create a dummy symbols_df for compatibility
         dummy_symbols_df = pd.DataFrame({
-            'string.symbol': ['SP500_SILVERBLATT'],
-            'string.source': ['sp500'],
-            'date.series.start': [start_date.strftime('%Y-%m-%d')]
+            'symbol': ['SP500_SILVERBLATT'],
+            'source': ['sp500'],
+            'date_series_start': [start_date.strftime('%Y-%m-%d')]
         })
         return self.fetch_batch(dummy_symbols_df)
     
@@ -139,21 +139,34 @@ class SP500Fetcher(BaseDataFetcher):
             self.logger.info(f"Visiting referer page: {self.referer_url}")
             driver.get(self.referer_url)
             
-            # Use utility method to wait for page load
-            if not self.web_scraper.wait_for_page_load(driver, timeout=10):
-                self.logger.warning("Referer page load incomplete, continuing...")
+            # Wait for page to load
+            import time
+            time.sleep(3)
+            self.logger.info("Referer page loaded")
             
             # Now navigate to the download URL
             self.logger.info(f"Downloading Excel file from: {self.sp500_url}")
             driver.get(self.sp500_url)
             
-            # Wait for download completion using utility method
-            downloaded_file = self.file_downloader.wait_for_download_completion(
-                timeout=15,
-                file_extension=".xlsx"
-            )
+            # Wait for download to complete (simple approach like debug script)
+            self.logger.info("Waiting for download to complete...")
+            time.sleep(10)
             
-            return downloaded_file
+            # Check if file was downloaded (simple file check)
+            import os
+            from pathlib import Path
+            
+            download_path = Path(self.download_dir)
+            excel_files = list(download_path.glob("*.xlsx"))
+            
+            if excel_files:
+                # Get the most recent file
+                latest_file = max(excel_files, key=lambda x: x.stat().st_mtime)
+                self.logger.info(f"✅ S&P 500 file downloaded successfully: {latest_file}")
+                return str(latest_file)
+            else:
+                self.logger.warning("❌ No Excel files found in download directory")
+                return None
             
         except Exception as e:
             self.logger.error(f"Error downloading S&P 500 file: {str(e)}")

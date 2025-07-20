@@ -94,9 +94,9 @@ class EIAFetcher(BaseDataFetcher):
         
         Args:
             symbols_df: DataFrame with symbol information containing:
-                       - string.symbol: EIA series ID
-                       - string.source: Data source name  
-                       - date.series.start: Start date for data
+                       - symbol: EIA series ID
+                       - source: Data source name  
+                       - date_series_start: Start date for data
             
         Returns:
             Combined DataFrame with all EIA data
@@ -104,7 +104,7 @@ class EIAFetcher(BaseDataFetcher):
         self.logger.info("Starting EIA data collection")
         
         # Filter for EIA symbols
-        eia_symbols = symbols_df[symbols_df['string.source'].str.lower() == 'eia'].copy()
+        eia_symbols = symbols_df[symbols_df['source'].str.lower() == 'eia'].copy()
         
         if eia_symbols.empty:
             self.logger.warning("No EIA symbols found")
@@ -115,8 +115,8 @@ class EIAFetcher(BaseDataFetcher):
         end_date = datetime.now()
         
         for idx, row in eia_symbols.iterrows():
-            series_id = row['string.symbol']
-            start_date_str = row['date.series.start']
+            series_id = row['symbol']
+            start_date_str = row['date_series_start']
             
             try:
                 start_date = datetime.strptime(start_date_str, '%Y-%m-%d')

@@ -31,7 +31,7 @@ class FINRAFetcher(BaseDataFetcher):
     utilities to fetch and standardize FINRA margin statistics data.
     """
     
-    def __init__(self, download_dir: str = "data/finra"):
+    def __init__(self, download_dir: str = "data/raw/finra"):
         """
         Initialize FINRA fetcher.
         
@@ -70,9 +70,9 @@ class FINRAFetcher(BaseDataFetcher):
         self.logger.info("FINRA fetches all data at once, delegating to fetch_batch")
         # Create a dummy symbols_df for compatibility
         dummy_symbols_df = pd.DataFrame({
-            'string.symbol': ['FINRA_MARGIN_STATS'],
-            'string.source': ['finra'],
-            'date.series.start': [start_date.strftime('%Y-%m-%d')]
+            'symbol': ['FINRA_MARGIN_STATS'],
+            'source': ['finra'],
+            'date_series_start': [start_date.strftime('%Y-%m-%d')]
         })
         return self.fetch_batch(dummy_symbols_df)
     
@@ -233,7 +233,7 @@ class FINRAFetcher(BaseDataFetcher):
             parsed_url = urlparse(download_url)
             filename = os.path.basename(parsed_url.path)
             if not filename.endswith(('.xlsx', '.xls')):
-                filename = "finra_margin_statistics.xlsx"
+                filename = "margin-statistics.xlsx"
             
             # Save file
             file_path = os.path.join(self.download_dir, filename)

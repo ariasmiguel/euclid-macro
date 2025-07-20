@@ -137,7 +137,7 @@ class FREDFetcher(BaseDataFetcher):
         self.logger.info("Starting FRED data collection with rate limiting")
         
         # Filter for FRED symbols
-        fred_symbols = symbols_df[symbols_df['string.source'].str.lower() == 'fred'].copy()
+        fred_symbols = symbols_df[symbols_df['source'].str.lower() == 'fred'].copy()
         
         if fred_symbols.empty:
             self.logger.warning("No FRED symbols found in symbols DataFrame")
@@ -158,8 +158,8 @@ class FREDFetcher(BaseDataFetcher):
         start_time = datetime.now()
         
         for idx, (_, row) in enumerate(fred_symbols.iterrows(), 1):
-            series_id = row['string.symbol']
-            start_date_str = row['date.series.start']
+            series_id = row['symbol']
+            start_date_str = row['date_series_start']
             
             try:
                 start_date = datetime.strptime(start_date_str, '%Y-%m-%d')
@@ -233,9 +233,9 @@ def fetch_fred_batch(series_list: List[str], start_date: datetime = datetime(199
     
     # Convert series list to DataFrame format expected by fetch_batch
     symbols_df = pd.DataFrame({
-        'string.symbol': series_list,
-        'string.source': 'fred',
-        'date.series.start': [start_date.strftime('%Y-%m-%d')] * len(series_list)
+        'symbol': series_list,
+        'source': 'fred',
+        'date_series_start': [start_date.strftime('%Y-%m-%d')] * len(series_list)
     })
     
     return fetcher.fetch_batch(symbols_df)

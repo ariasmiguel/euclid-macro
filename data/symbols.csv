@@ -296,8 +296,8 @@ by Refiners, Monthly",Thousand Gallons per Day,-1,1990-01-01,1994-01-01
 PET.A133B00001.M,EIA,"U.S. Premium Gasoline Bulk Sales
 (Volume) by Refiners, Monthly",Thousand Gallons per Day,-1,1990-01-01,1994-01-01
 TOTAL.OGNRPUS.M,EIA,"Crude Oil and Natural Gas Rotary Rigs in Operation, Total, Monthly",Number of rigs,-1,1990-01-01,1973-01-01
-E_ERTRRO_XR0_NUS_C,EIA,"Crude Oil Rotary Rigs in Operation, Monthly",Number of rigs,-1,1990-01-01,1973-01-01
-E_ERTRRG_XR0_NUS_C,EIA,"Natural Gas Rotary Rigs in Operation, Monthly",Number of rigs,-1,1990-01-01,1973-01-01
+TOTAL.PANRPUS.M,EIA,"Crude Oil Rotary Rigs in Operation, Monthly",Number of rigs,-1,1990-01-01,1973-01-01
+TOTAL.NGNRPUS.M,EIA,"Natural Gas Rotary Rigs in Operation, Monthly",Number of rigs,-1,1990-01-01,1973-01-01
 BKRTotal,BKR,Total Rig Count,Number of rigs,-1,1987-07-17,2022-03-25
 BKRGas,BKR,Gas Rig Count,Number of rigs,-1,2022-03-25,1987-07-17
 BKROil,BKR,Oil Rig Count,Number of rigs,-1,2022-03-25,1987-07-17

@@ -123,10 +123,18 @@ class SP500Fetcher(BaseDataFetcher):
     def _download_sp500_file(self) -> Optional[str]:
         """
         Download S&P 500 Excel file using web scraping to establish session.
+        Falls back to existing files in data/raw/sp500 if download fails.
         
         Returns:
             Path to downloaded file or None if failed
         """
+        # First, check for existing files in the download directory
+        existing_file = self._find_existing_sp500_file()
+        if existing_file:
+            self.logger.info(f"📁 Using existing S&P 500 file: {existing_file}")
+            return existing_file
+        
+        # Try to download new file
         driver = None
         try:
             # Setup web driver using utility class
@@ -170,11 +178,43 @@ class SP500Fetcher(BaseDataFetcher):
             
         except Exception as e:
             self.logger.error(f"Error downloading S&P 500 file: {str(e)}")
+            # Fall back to existing file if download failed
+            existing_file = self._find_existing_sp500_file()
+            if existing_file:
+                self.logger.info(f"📁 Falling back to existing file: {existing_file}")
+                return existing_file
             return None
             
         finally:
             if driver:
                 driver.quit()
+    
+    def _find_existing_sp500_file(self) -> Optional[str]:
+        """
+        Find existing S&P 500 Excel file in the download directory.
+        
+        Returns:
+            Path to existing file or None if not found
+        """
+        import os
+        from pathlib import Path
+        
+        download_path = Path(self.download_dir)
+        
+        # Look for Excel files with common S&P 500 naming patterns
+        excel_files = list(download_path.glob("*.xlsx"))
+        
+        if not excel_files:
+            self.logger.info("No existing Excel files found in download directory")
+            return None
+        
+        # Sort by modification time (most recent first)
+        excel_files.sort(key=lambda x: x.stat().st_mtime, reverse=True)
+        
+        # Return the most recent file
+        latest_file = excel_files[0]
+        self.logger.info(f"Found existing file: {latest_file}")
+        return str(latest_file)
     
     def _process_sp500_excel(self, file_path: str) -> pd.DataFrame:
         """

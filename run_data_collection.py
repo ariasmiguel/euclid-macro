@@ -65,18 +65,18 @@ Features:
     logger.info(f"⏰ Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     
     try:
-        # Initialize and run the data collection pipeline
+        # Initialize and run the raw data collection pipeline
         pipeline = DataCollectionPipeline(allowed_sources=allowed_sources)
-        success = pipeline.run_full_pipeline()
+        success = pipeline.run_raw_collection()
         
         if not success:
-            logger.error("❌ Data collection pipeline failed")
+            logger.error("❌ Raw data collection pipeline failed")
             sys.exit(1)
         else:
-            logger.info("🎉 Data collection pipeline completed successfully!")
-            logger.info("📊 Data is now available in:")
-            logger.info("   • Individual source files: data/raw/{source}_{timestamp}.parquet")
-            logger.info("   • Combined file: data/raw/all_sources_combined_latest.parquet")
+            logger.info("🎉 Raw data collection pipeline completed successfully!")
+            logger.info("📊 Raw data is now available in:")
+            logger.info("   • Individual source files: data/raw/{source}/{source}_{timestamp}.parquet")
+            logger.info("   • Latest files: data/raw/{source}/{source}_latest.parquet")
             
     except KeyboardInterrupt:
         logger.info("⏹️  Pipeline interrupted by user")

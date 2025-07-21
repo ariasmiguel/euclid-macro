@@ -154,6 +154,7 @@ class FREDFetcher(BaseDataFetcher):
         end_date = datetime.now()
         successful_fetches = 0
         failed_fetches = 0
+        symbols_with_no_data = []  # Track symbols that return empty data
         
         start_time = datetime.now()
         
@@ -184,14 +185,21 @@ class FREDFetcher(BaseDataFetcher):
                     successful_fetches += 1
                 else:
                     failed_fetches += 1
+                    symbols_with_no_data.append(series_id)  # Track empty data symbols
                     
             except Exception as e:
                 self.logger.error(f"Error processing FRED series {series_id}: {str(e)}")
                 failed_fetches += 1
                 continue
         
-        # Use base class summary logging
-        return self.log_collection_summary(all_data, total_symbols)
+        # Enhanced summary logging
+        result_df = self.log_collection_summary(all_data, total_symbols)
+        
+        # Log symbols with no data
+        if symbols_with_no_data:
+            self.logger.warning(f"Symbols with no data ({len(symbols_with_no_data)}): {', '.join(symbols_with_no_data)}")
+        
+        return result_df
 
 
 # Legacy function wrappers for backward compatibility

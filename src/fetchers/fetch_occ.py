@@ -42,7 +42,7 @@ class OCCDailyDataFetcher(BaseDataFetcher):
     descriptive names like 'OCC_Options_Equity_Volume', 'OCC_Futures_Total_Volume'.
     """
     
-    def __init__(self, download_dir: str = "data/bronze"):
+    def __init__(self, download_dir: str = "data/raw/occ"):
         """
         Initialize OCC fetcher.
         

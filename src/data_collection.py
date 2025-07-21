@@ -36,20 +36,121 @@ class SimpleStorageManager:
         self.raw_path = Path(raw_path)
         self.raw_path.mkdir(parents=True, exist_ok=True)
         
+    def _standardize_to_long_format(self, data: pd.DataFrame, source: str) -> pd.DataFrame:
+        """Convert data to standard long format: date, symbol, metric, value, source"""
+        if data.empty:
+            return data
+            
+        df = data.copy()
+        
+        # Ensure date column exists and is datetime
+        if 'date' in df.columns:
+            df['date'] = pd.to_datetime(df['date'])
+        else:
+            raise ValueError(f"Missing 'date' column in {source} data")
+        
+        # Handle different source formats
+        if source == 'yahoo':
+            # Yahoo data is in wide format - melt to long format
+            id_vars = ['date', 'symbol']
+            value_vars = ['close', 'high', 'low', 'open', 'volume']
+            
+            # Only include columns that exist
+            existing_vars = [col for col in value_vars if col in df.columns]
+            
+            df_long = df.melt(
+                id_vars=id_vars,
+                value_vars=existing_vars,
+                var_name='metric',
+                value_name='value'
+            )
+            
+        elif source == 'fred':
+            # FRED data uses series_id instead of symbol
+            df_long = df.rename(columns={'series_id': 'symbol'})
+            df_long['metric'] = 'value'  # FRED typically has one value per series
+            
+        elif source == 'eia':
+            # EIA data uses series_id instead of symbol
+            df_long = df.rename(columns={'series_id': 'symbol'})
+            df_long['metric'] = 'value'
+            
+        elif source in ['baker', 'finra', 'sp500', 'usda', 'occ']:
+            # These sources should already have symbol column
+            if 'symbol' not in df.columns:
+                raise ValueError(f"Missing 'symbol' column in {source} data")
+            
+            # Check if data is already in long format with value column
+            if 'value' in df.columns and 'metric' in df.columns:
+                # Data is already in the correct format
+                df_long = df.copy()
+            else:
+                # If they have multiple value columns, melt them
+                id_vars = ['date', 'symbol']
+                value_cols = [col for col in df.columns if col not in id_vars]
+                
+                if len(value_cols) > 1:
+                    df_long = df.melt(
+                        id_vars=id_vars,
+                        value_vars=value_cols,
+                        var_name='metric',
+                        value_name='value'
+                    )
+                else:
+                    # Single value column
+                    df_long = df.copy()
+                    df_long['metric'] = value_cols[0] if value_cols else 'value'
+                    if value_cols:
+                        df_long['value'] = df_long[value_cols[0]]
+                        df_long = df_long.drop(columns=value_cols)
+        else:
+            # Default handling for unknown sources
+            df_long = df.copy()
+            if 'symbol' not in df_long.columns:
+                df_long['symbol'] = 'unknown'
+            df_long['metric'] = 'value'
+        
+        # Add source column
+        df_long['source'] = source
+        
+        # Ensure required columns exist and are in correct order
+        required_cols = ['date', 'symbol', 'metric', 'value', 'source']
+        for col in required_cols:
+            if col not in df_long.columns:
+                if col == 'value' and 'metric' in df_long.columns:
+                    # If we have metric but no value, use the metric column as value
+                    df_long['value'] = df_long[df_long.columns[df_long.columns != 'metric'].tolist()[0]]
+                else:
+                    df_long[col] = 'unknown'
+        
+        # Reorder columns
+        extra_cols = [col for col in df_long.columns if col not in required_cols]
+        column_order = required_cols + extra_cols
+        df_long = df_long[[col for col in column_order if col in df_long.columns]]
+        
+        return df_long
+        
     def save_source_data(self, source: str, data: pd.DataFrame) -> Optional[Path]:
-        """Save all data from a source to single parquet file"""
+        """Save all data from a source to single parquet file in source-specific folder"""
         if data.empty:
             logger.warning(f"No data to save for {source}")
             return None
-            
+        
+        # Create source-specific directory
+        source_dir = self.raw_path / source
+        source_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Standardize data to long format
+        standardized_data = self._standardize_to_long_format(data, source)
+        
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"{source}_{timestamp}.parquet"
-        file_path = self.raw_path / filename
+        file_path = source_dir / filename
         
         # Save with compression
-        data.to_parquet(file_path, index=False, compression='snappy')
+        standardized_data.to_parquet(file_path, index=False, compression='snappy')
         
-        logger.info(f"Saved {len(data):,} rows from {source} to {file_path}")
+        logger.info(f"Saved {len(standardized_data):,} rows from {source} to {file_path}")
         return file_path
     
     def save_combined_data(self, all_data: Dict[str, pd.DataFrame]) -> Optional[Path]:
@@ -58,26 +159,13 @@ class SimpleStorageManager:
             logger.warning("No data to combine")
             return None
         
-        # Combine all dataframes
+        # Standardize and combine all dataframes
         combined_dfs = []
         for source, df in all_data.items():
             if not df.empty:
-                # Ensure source column exists
-                if 'source' not in df.columns:
-                    df['source'] = source
-                
-                # Ensure metric column exists (for sources that don't have it)
-                if 'metric' not in df.columns:
-                    # For sources like Yahoo that have multiple columns, we need to identify the metric
-                    if source == 'yahoo':
-                        # Yahoo data should already have been melted to long format with metric column
-                        # If not, we'll use 'close' as default
-                        df['metric'] = 'close'
-                    else:
-                        # For other sources, use a default metric name
-                        df['metric'] = 'value'
-                
-                combined_dfs.append(df)
+                # Standardize to long format
+                standardized_df = self._standardize_to_long_format(df, source)
+                combined_dfs.append(standardized_df)
         
         if not combined_dfs:
             return None
@@ -85,7 +173,7 @@ class SimpleStorageManager:
         # Create long format dataframe
         long_df = pd.concat(combined_dfs, ignore_index=True)
         
-        # Ensure consistent column order with metric included
+        # Ensure consistent column order
         required_cols = ['date', 'symbol', 'metric', 'value', 'source']
         extra_cols = [col for col in long_df.columns if col not in required_cols]
         column_order = required_cols + extra_cols
@@ -439,10 +527,10 @@ class DataCollectionPipeline:
             logger.info("=" * 60)
             if total_rows > 0:
                 logger.info("📁 Data saved to:")
-                logger.info("   • Individual source files: data/raw/{source}_{timestamp}.parquet")
+                logger.info("   • Individual source files: data/raw/{source}/{{timestamp}}.parquet")
                 if combined_path:
                     logger.info(f"   • Combined file: {combined_path}")
-                    logger.info("   • Latest combined: data/raw/all_sources_combined_latest.parquet")
+                    logger.info("   • Latest combined: data/raw/combined_data_latest.parquet")
             else:
                 logger.info("📁 No output files created (no data collected)")
             

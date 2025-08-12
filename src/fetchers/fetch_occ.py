@@ -39,6 +39,9 @@ class OCCDailyDataFetcher(BaseDataFetcher):
         self.download_dir = download_dir
         os.makedirs(self.download_dir, exist_ok=True)
         
+        # Create year subdirectories structure
+        self._setup_year_directories()
+        
         # OCC configuration
         self.base_url = "https://www.theocc.com/market-data/market-data-reports/volume-and-open-interest/historical-volume-statistics"
         self.sleep_time = 0.3
@@ -58,6 +61,30 @@ class OCCDailyDataFetcher(BaseDataFetcher):
         self.chrome_options.add_argument('--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
         
         self.driver = None
+    
+    def _setup_year_directories(self):
+        """Create year subdirectories for organized storage."""
+        # Create directories for years 2008-2025 (OCC data range)
+        for year in range(2008, 2026):
+            year_dir = os.path.join(self.download_dir, str(year))
+            os.makedirs(year_dir, exist_ok=True)
+    
+    def _get_month_file_path(self, year: int, month: int) -> str:
+        """Get the file path for a specific year-month combination."""
+        year_dir = os.path.join(self.download_dir, str(year))
+        filename = f"{year}_{month:02d}.csv"
+        return os.path.join(year_dir, filename)
+    
+    def _save_month_data(self, data: pd.DataFrame, year: int, month: int) -> bool:
+        """Save month data to CSV file."""
+        try:
+            filepath = self._get_month_file_path(year, month)
+            data.to_csv(filepath, index=False)
+            self.logger.info(f"💾 Saved {len(data)} records to {filepath}")
+            return True
+        except Exception as e:
+            self.logger.error(f"Error saving month data: {str(e)}")
+            return False
     
     def fetch_data(self, start_date: date, end_date: date) -> pd.DataFrame:
         """
@@ -96,6 +123,11 @@ class OCCDailyDataFetcher(BaseDataFetcher):
             month_data = self.extract_month_data_single(year, month)
             if month_data:
                 long_format_data = self.convert_to_long_format([month_data])
+                
+                # Save to file
+                long_format_data.to_csv(f"data/raw/occ/{year}/{year}_{month:02d}.csv", index=False)
+                
+                # Append to all_data
                 all_data.append(long_format_data)
             
             time.sleep(1.0)  # Be nice to the server
